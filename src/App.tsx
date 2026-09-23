@@ -1,7 +1,10 @@
 import styled from "styled-components";
 import GameOfLife from "./GameOfLife";
+import { BACKGROUND_COLOR } from "./colors";
 
-const Container = styled.div``;
+const Container = styled.div`
+  background-color: ${BACKGROUND_COLOR};
+`;
 
 function App() {
   return (

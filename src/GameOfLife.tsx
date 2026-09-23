@@ -4,10 +4,8 @@ import { isMobile } from "./utils";
 import { CELL_COLOR_NEW, CELL_COLOR_MID, CELL_COLOR_OLD } from "./colors";
 
 const Canvas = styled.canvas`
-  display: block;
   touch-action: none;
 `;
-
 
 const CELL_SIZE_DESKTOP = 15;
 const CELL_SIZE_MOBILE = 16;
@@ -20,7 +18,7 @@ const SPARK_CHANCE = 0.00055;
 // if live fraction drops below this, sparks kick in
 const LOW_POP_FRACTION = 0.012;
 
-export default function GameOfLife() {
+export default function GameOfLife(props: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -29,7 +27,7 @@ export default function GameOfLife() {
     return startGameOfLife(canvas);
   }, []);
 
-  return <Canvas ref={canvasRef} />;
+  return <Canvas ref={canvasRef} className={props.className} />;
 }
 
 function lerpColor(hexA: string, hexB: string, t: number): string {

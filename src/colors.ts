@@ -12,3 +12,4 @@ export const CELL_COLOR_NEW = colors[4];
 export const CELL_COLOR_MID = colors[3];
 export const CELL_COLOR_OLD = colors[2];
 export const BACKGROUND_COLOR = colors[1]
+export const TEXT_COLOR = colors[8]

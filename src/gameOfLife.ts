@@ -1,6 +1,5 @@
 const canvas = document.getElementById("life-canvas") as HTMLCanvasElement;
 const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
-const hint = document.getElementById("hint") as HTMLElement;
 
 // ---- Config ----
 const CELL_SIZE_DESKTOP = 15;
@@ -199,17 +198,9 @@ function setCellFromEvent(clientX: number, clientY: number): void {
   age[i] = 1;
 }
 
-function hidePointerHint(): void {
-  if (!hint.classList.contains("fading")) {
-    hint.classList.add("fading");
-    hint.classList.remove("visible");
-  }
-}
-
 canvas.addEventListener("pointerdown", (e: PointerEvent) => {
   pointerDown = true;
   setCellFromEvent(e.clientX, e.clientY);
-  hidePointerHint();
   canvas.setPointerCapture?.(e.pointerId);
 });
 
@@ -245,11 +236,6 @@ function init(): void {
   computeGrid();
   resizeCanvas(false);
   seedRandom(0.14);
-
-  setTimeout(() => {
-    hint.classList.add("visible");
-  }, 700);
-  setTimeout(hidePointerHint, 6000);
 
   requestAnimationFrame(loop);
 }

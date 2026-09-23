@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
-import { CELL_COLOR_NEW, CELL_COLOR_MID, CELL_COLOR_OLD } from "./colors";
+import { describe, expect, it } from "vitest"
+import { CELL_COLOR_NEW, CELL_COLOR_MID, CELL_COLOR_OLD } from "./colors"
 
 describe("colors", () => {
   it("should have color values", () => {
@@ -8,4 +8,3 @@ describe("colors", () => {
     expect(CELL_COLOR_OLD).toBeDefined()
   })
 })
-

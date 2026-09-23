@@ -13,6 +13,7 @@ Error generating stack: `+e.message+`
 `,rr=15,ir=16,ar=130,or=10,sr=55e-5,cr=.012;function lr(e){let t=(0,qe.c)(4),n=(0,Je.useRef)(null),r,i;t[0]===Symbol.for(`react.memo_cache_sentinel`)?(r=()=>{let e=n.current;if(e)return dr(e)},i=[],t[0]=r,t[1]=i):(r=t[0],i=t[1]),(0,Je.useEffect)(r,i);let a;return t[2]===e.className?a=t[3]:(a=(0,tr.jsx)(nr,{ref:n,className:e.className}),t[2]=e.className,t[3]=a),a}function ur(e,t,n){let r=parseInt(e.slice(1),16),i=parseInt(t.slice(1),16),a=r>>16&255,o=r>>8&255,s=r&255,c=i>>16&255,l=i>>8&255,u=i&255,d=Math.round(a+(c-a)*n),f=Math.round(o+(l-o)*n),p=Math.round(s+(u-s)*n);return`rgb(`+d+`,`+f+`,`+p+`)`}function dr(e){let t=e.getContext(`2d`);if(!t)return()=>{};let n=t,r=Math.max(1,Math.min(window.devicePixelRatio||1,2)),i=0,a=0,o=0,s=0,c=0,l=new Uint8Array,u=new Uint8Array,d=0,f=!1,p=0,m,h;function g(e,t){return t*a+e}function _(){s=window.innerWidth,c=window.innerHeight,i=qn()?ir:rr,a=Math.max(4,Math.ceil(s/i)),o=Math.max(4,Math.ceil(c/i))}function v(t){let i=a,d=l,f=u;_(),e.style.width=s+`px`,e.style.height=c+`px`,e.width=Math.floor(s*r),e.height=Math.floor(c*r),n.setTransform(r,0,0,r,0,0);let p=new Uint8Array(a*o),m=new Uint8Array(a*o);if(t&&d.length>0){let e=d.length/i,t=Math.min(i,a),n=Math.min(e,o);for(let e=0;e<n;e++)for(let n=0;n<t;n++){let t=e*i+n,r=e*a+n;p[r]=d[t],m[r]=f[t]}}l=p,u=m}function y(e){for(let t=0;t<l.length;t++)Math.random()<e&&(l[t]=1,u[t]=1)}function b(e,t){let n=0;for(let r=-1;r<=1;r++)for(let i=-1;i<=1;i++){if(i===0&&r===0)continue;let s=(e+i+a)%a,c=(t+r+o)%o;n+=l[g(s,c)]}return n}function x(){let e=new Uint8Array(a*o),t=new Uint8Array(a*o),n=0;for(let r=0;r<o;r++)for(let i=0;i<a;i++){let a=g(i,r),o=b(i,r),s=l[a]===1,c=!s&&o===3;(c||s&&(o===2||o===3))&&(e[a]=1,t[a]=c?1:Math.min(or,u[a]+1),n++)}if(n/(a*o)<cr)for(let n=0;n<e.length;n++)e[n]===0&&Math.random()<sr&&(e[n]=1,t[n]=1);l=e,u=t}function S(){n.clearRect(0,0,s,c);for(let e=0;e<o;e++)for(let t=0;t<a;t++){let r=g(t,e);if(!l[r])continue;let a=u[r],o=Math.min(1,a/or),s=o<.5?ur(Yn,Xn,o*2):ur(Xn,Zn,(o-.5)*2);n.fillStyle=s;let c=t*i,d=e*i,f=i-1.4;n.fillRect(c+.7,d+.7,f,f)}}function C(e){d||=e,e-d>=ar&&(x(),d=e),S(),p=requestAnimationFrame(C)}function ee(t,n){let r=e.getBoundingClientRect(),s=Math.floor((t-r.left)/i),c=Math.floor((n-r.top)/i);if(s<0||c<0||s>=a||c>=o)return;let d=g(s,c);l[d]=1,u[d]=1}function w(t){f=!0,ee(t.clientX,t.clientY),e.setPointerCapture?.(t.pointerId)}function te(e){f&&ee(e.clientX,e.clientY)}function T(){f=!1}function ne(){clearTimeout(m),m=setTimeout(()=>{v(!0)},120)}function re(){clearTimeout(h),h=setTimeout(()=>{v(!0)},200)}return e.addEventListener(`pointerdown`,w),e.addEventListener(`pointermove`,te),window.addEventListener(`pointerup`,T),window.addEventListener(`pointercancel`,T),window.addEventListener(`resize`,ne),window.addEventListener(`orientationchange`,re),v(!1),y(.14),p=requestAnimationFrame(C),()=>{cancelAnimationFrame(p),clearTimeout(m),clearTimeout(h),e.removeEventListener(`pointerdown`,w),e.removeEventListener(`pointermove`,te),window.removeEventListener(`pointerup`,T),window.removeEventListener(`pointercancel`,T),window.removeEventListener(`resize`,ne),window.removeEventListener(`orientationchange`,re)}}var fr=Kn.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.5rem;
   color: ${$n};
   font-family: system-ui, sans-serif;
@@ -24,21 +25,25 @@ Error generating stack: `+e.message+`
   margin: 0;
   font-size: 1.25rem;
   opacity: 0.8;
-`;function hr(e){let t=(0,qe.c)(4),n,r;t[0]===Symbol.for(`react.memo_cache_sentinel`)?(n=(0,tr.jsx)(pr,{children:`Nathan Myers`}),r=(0,tr.jsx)(mr,{children:`Software Engineer`}),t[0]=n,t[1]=r):(n=t[0],r=t[1]);let i;return t[2]===e.className?i=t[3]:(i=(0,tr.jsxs)(fr,{className:e.className,children:[n,r]}),t[2]=e.className,t[3]=i),i}var gr=Kn.div`
+`,hr=Kn.a``,gr=Kn.div`
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+`;function _r(e){let t=(0,qe.c)(5),n,r;t[0]===Symbol.for(`react.memo_cache_sentinel`)?(n=(0,tr.jsx)(pr,{children:`Nathan Myers`}),r=(0,tr.jsx)(mr,{children:`Software Engineer -- Chicago`}),t[0]=n,t[1]=r):(n=t[0],r=t[1]);let i;t[2]===Symbol.for(`react.memo_cache_sentinel`)?(i=(0,tr.jsxs)(gr,{children:[(0,tr.jsx)(hr,{href:`https://github.com/nathanemyers`,target:`_blank`,rel:`noopener noreferrer`,children:`Github`}),(0,tr.jsx)(hr,{href:`https://www.linkedin.com/in/nathan-myers-173a9719/`,target:`_blank`,rel:`noopener noreferrer`,children:`LinkedIn`})]}),t[2]=i):i=t[2];let a;return t[3]===e.className?a=t[4]:(a=(0,tr.jsxs)(fr,{className:e.className,children:[n,r,i]}),t[3]=e.className,t[4]=a),a}var vr=Kn.div`
   background-color: ${Qn};
   min-height: 100vh;
-`,_r=Kn.div`
+`,yr=Kn.div`
   display: grid;
   position: relative;
   grid-template-columns: auto 400px auto;
   grid-template-rows: 20vh 1fr;
   z-index: 1;
   pointer-events: none;
-`,vr=Kn(lr)`
+`,br=Kn(lr)`
   top: 0;
   position: fixed;
-`,yr=Kn(hr)`
+`,xr=Kn(_r)`
   grid-column: 2;
   grid-row: 2;
   pointer-events: auto;
-`;function br(){let e=(0,qe.c)(2),t;e[0]===Symbol.for(`react.memo_cache_sentinel`)?(t=(0,tr.jsx)(vr,{}),e[0]=t):t=e[0];let n;return e[1]===Symbol.for(`react.memo_cache_sentinel`)?(n=(0,tr.jsxs)(gr,{children:[t,(0,tr.jsx)(_r,{children:(0,tr.jsx)(yr,{})})]}),e[1]=n):n=e[1],n}(0,Ke.createRoot)(document.getElementById(`root`)).render((0,tr.jsx)(Je.StrictMode,{children:(0,tr.jsx)(br,{})}));
+`;function Sr(){let e=(0,qe.c)(2),t;e[0]===Symbol.for(`react.memo_cache_sentinel`)?(t=(0,tr.jsx)(br,{}),e[0]=t):t=e[0];let n;return e[1]===Symbol.for(`react.memo_cache_sentinel`)?(n=(0,tr.jsxs)(vr,{children:[t,(0,tr.jsx)(yr,{children:(0,tr.jsx)(xr,{})})]}),e[1]=n):n=e[1],n}(0,Ke.createRoot)(document.getElementById(`root`)).render((0,tr.jsx)(Je.StrictMode,{children:(0,tr.jsx)(Sr,{})}));

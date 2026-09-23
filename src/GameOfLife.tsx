@@ -1,11 +1,13 @@
 import { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { isMobile } from "./utils";
+import { CELL_COLOR_NEW, CELL_COLOR_MID, CELL_COLOR_OLD } from "./colors";
 
 const Canvas = styled.canvas`
   display: block;
   touch-action: none;
 `;
+
 
 const CELL_SIZE_DESKTOP = 15;
 const CELL_SIZE_MOBILE = 16;
@@ -43,12 +45,6 @@ function lerpColor(hexA: string, hexB: string, t: number): string {
   const g = Math.round(ag + (bg - ag) * t);
   const bl = Math.round(ab + (bb - ab) * t);
   return "rgb(" + r + "," + g + "," + bl + ")";
-}
-
-function styleColor(name: string): string {
-  return getComputedStyle(document.documentElement)
-    .getPropertyValue(name)
-    .trim();
 }
 
 // Sets up the simulation on the given canvas and returns a cleanup function.
@@ -175,9 +171,6 @@ function startGameOfLife(canvas: HTMLCanvasElement): () => void {
   }
 
   function draw(): void {
-    const cNew = styleColor("--cell-new") || "#f4fff9";
-    const cMid = styleColor("--cell-mid") || "#6fe7c0";
-    const cOld = styleColor("--cell-old") || "#1f6b5c";
 
     ctx.clearRect(0, 0, cssW, cssH);
 
@@ -189,8 +182,8 @@ function startGameOfLife(canvas: HTMLCanvasElement): () => void {
         const t = Math.min(1, a / MAX_AGE);
         const color =
           t < 0.5
-            ? lerpColor(cNew, cMid, t * 2)
-            : lerpColor(cMid, cOld, (t - 0.5) * 2);
+            ? lerpColor(CELL_COLOR_NEW, CELL_COLOR_MID, t * 2)
+            : lerpColor(CELL_COLOR_MID, CELL_COLOR_OLD, (t - 0.5) * 2);
         ctx.fillStyle = color;
         const px = x * cellSize;
         const py = y * cellSize;

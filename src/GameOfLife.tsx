@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react"
 import styled from "styled-components"
 import { isMobile } from "./utils"
 import { CELL_COLOR_NEW, CELL_COLOR_MID, CELL_COLOR_OLD } from "./colors"
+import { lerpColor, nextGeneration } from "./life"
 
 const Canvas = styled.canvas`
   touch-action: none;
@@ -28,21 +29,6 @@ export default function GameOfLife(props: { className?: string }) {
   }, [])
 
   return <Canvas ref={canvasRef} className={props.className} />
-}
-
-function lerpColor(hexA: string, hexB: string, t: number): string {
-  const a = parseInt(hexA.slice(1), 16)
-  const b = parseInt(hexB.slice(1), 16)
-  const ar = (a >> 16) & 255,
-    ag = (a >> 8) & 255,
-    ab = a & 255
-  const br = (b >> 16) & 255,
-    bg = (b >> 8) & 255,
-    bb = b & 255
-  const r = Math.round(ar + (br - ar) * t)
-  const g = Math.round(ag + (bg - ag) * t)
-  const bl = Math.round(ab + (bb - ab) * t)
-  return "rgb(" + r + "," + g + "," + bl + ")"
 }
 
 // Sets up the simulation on the given canvas and returns a cleanup function.
@@ -119,39 +105,14 @@ function startGameOfLife(canvas: HTMLCanvasElement): () => void {
     }
   }
 
-  function countLiveNeighbors(x: number, y: number): number {
-    let count = 0
-    for (let dy = -1; dy <= 1; dy++) {
-      for (let dx = -1; dx <= 1; dx++) {
-        if (dx === 0 && dy === 0) continue
-        const nx = (x + dx + cols) % cols
-        const ny = (y + dy + rows) % rows
-        count += current[idx(nx, ny)]
-      }
-    }
-    return count
-  }
-
   function step(): void {
-    const next = new Uint8Array(cols * rows)
-    const nextAge = new Uint8Array(cols * rows)
-    let liveCount = 0
-
-    for (let y = 0; y < rows; y++) {
-      for (let x = 0; x < cols; x++) {
-        const i = idx(x, y)
-        const n = countLiveNeighbors(x, y)
-        const alive = current[i] === 1
-        const born = !alive && n === 3
-        const survives = alive && (n === 2 || n === 3)
-
-        if (born || survives) {
-          next[i] = 1
-          nextAge[i] = born ? 1 : Math.min(MAX_AGE, age[i] + 1)
-          liveCount++
-        }
-      }
-    }
+    const { next, nextAge, liveCount } = nextGeneration(
+      current,
+      age,
+      cols,
+      rows,
+      MAX_AGE,
+    )
 
     // Ambient "cosmic ray" sparks so the field never stays permanently dark
     const fraction = liveCount / (cols * rows)

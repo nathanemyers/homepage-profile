@@ -11,7 +11,7 @@ const AppContainer = styled.div`
 const Container = styled.div`
   display: grid;
   position: relative;
-  grid-template-columns: auto 400px auto;
+  grid-template-columns: 1fr min(520px, calc(100vw - 2rem)) 1fr;
   grid-template-rows: 20vh 1fr;
   z-index: 1;
   pointer-events: none;

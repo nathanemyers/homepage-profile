@@ -87,15 +87,17 @@ const InterestDetail = styled.span`
   color: ${INK_MUTED};
 `
 
-// TODO: replace placeholder copy with real content
 const INTERESTS = [
-  { name: "Interest one", detail: "A sentence about why this interests you." },
-  { name: "Interest two", detail: "A sentence about why this interests you." },
   {
-    name: "Interest three",
+    name: "Film Photography",
     detail: "A sentence about why this interests you.",
   },
-  { name: "Interest four", detail: "A sentence about why this interests you." },
+  { name: "Hiking", detail: "A sentence about why this interests you." },
+  {
+    name: "Gardening",
+    detail: "A sentence about why this interests you.",
+  },
+  { name: "Gaming", detail: "A sentence about why this interests you." },
 ]
 
 interface AboutSectionProps {
@@ -111,13 +113,18 @@ export default function AboutSection(props: AboutSectionProps) {
       </Letterhead>
       <Heading id="about-heading">Hi, I'm Nathan.</Heading>
       <Body>
-        Placeholder: a short introduction — what you do, what kind of work you
-        enjoy most, and what you're looking for next.
+        I'm a long time software engineer who has worked small teams, big teams,
+        backend, and frontend. I first got interested in programming by making
+        custom Starcraft maps for my friends, and it's been a lot of fun ever
+        since.
       </Body>
       <Body>
-        Placeholder: a second paragraph with a bit more background, such as how
-        you got into software, notable projects, or how you like to work with a
-        team.
+        I'm the type of person who loves to come into the office and get to know
+        my coworkers. My favorite types of work is anything that helps people
+        make their life easier, like data visualizations, delightful user
+        interfaces, or tools that remove pain points. I'm a big believer in Test
+        Driven Development (TDD), giving positive constructive feedback on PRs,
+        and architecting clean solutions to tricky problems.
       </Body>
       <Subheading>Interests</Subheading>
       <Interests>

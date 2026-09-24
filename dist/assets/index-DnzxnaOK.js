@@ -31,29 +31,6 @@ Error generating stack: `+e.message+`
   background:
     ${mr}, ${gr}, ${hr},
     linear-gradient(170deg, #fcf9f2 0%, #f3eee2 100%);
-  /* Thin card stock: a crisp contact shadow plus a soft cast shadow */
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.04),
-    0 1px 1px rgba(0, 0, 0, 0.15),
-    0 3px 6px rgba(0, 0, 0, 0.12),
-    0 12px 24px rgba(0, 0, 0, 0.16);
-  transform: rotate(-1.5deg);
-  transition:
-    transform 250ms ease,
-    box-shadow 250ms ease;
-
-  &:hover {
-    transform: rotate(0deg) translateY(-4px);
-    box-shadow:
-      0 0 0 1px rgba(0, 0, 0, 0.04),
-      0 2px 2px rgba(0, 0, 0, 0.12),
-      0 8px 14px rgba(0, 0, 0, 0.12),
-      0 20px 36px rgba(0, 0, 0, 0.18);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    transition: none;
-  }
 `,br=N.div`
   position: absolute;
   right: 0;
@@ -112,11 +89,6 @@ Error generating stack: `+e.message+`
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 2px;
   overflow: hidden;
-
-  img {
-    filter: saturate(0.9) contrast(0.95);
-    mix-blend-mode: multiply;
-  }
 `,Dr=N.img`
   display: block;
   width: 100%;
@@ -166,4 +138,27 @@ Error generating stack: `+e.message+`
   grid-column: 2;
   grid-row: 2;
   pointer-events: auto;
+
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.04),
+    0 1px 1px rgba(0, 0, 0, 0.15),
+    0 3px 6px rgba(0, 0, 0, 0.12),
+    0 12px 24px rgba(0, 0, 0, 0.16);
+  transform: rotate(-1.5deg);
+  transition:
+    transform 250ms ease,
+    box-shadow 250ms ease;
+
+  &:hover {
+    transform: rotate(0deg) translateY(-4px);
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.04),
+      0 2px 2px rgba(0, 0, 0, 0.12),
+      0 8px 14px rgba(0, 0, 0, 0.12),
+      0 20px 36px rgba(0, 0, 0, 0.18);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
 `;function Fr(){let e=(0,Je.c)(2),t;e[0]===Symbol.for(`react.memo_cache_sentinel`)?(t=(0,P.jsx)(Nr,{}),e[0]=t):t=e[0];let n;return e[1]===Symbol.for(`react.memo_cache_sentinel`)?(n=(0,P.jsxs)(jr,{children:[t,(0,P.jsx)(Mr,{children:(0,P.jsx)(Pr,{})})]}),e[1]=n):n=e[1],n}(0,qe.createRoot)(document.getElementById(`root`)).render((0,P.jsx)(Ye.StrictMode,{children:(0,P.jsx)(Fr,{})}));

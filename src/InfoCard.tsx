@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { BACKGROUND_COLOR } from "./colors"
+import profilePhoto from "./assets/profile.jpeg"
 
 // Wraps an SVG filter in a tile that can be used as a CSS background layer
 const svgTexture = (size: number, filter: string) =>
@@ -149,8 +150,7 @@ const PhotoMount = styled.div`
   border-radius: 2px;
   overflow: hidden;
 
-  img,
-  > div {
+  img {
     filter: saturate(0.9) contrast(0.95);
     mix-blend-mode: multiply;
   }
@@ -162,22 +162,6 @@ const Photo = styled.img`
   height: 100%;
   object-fit: cover;
   border-radius: 2px;
-`
-
-const PhotoPlaceholder = styled.div`
-  width: 100%;
-  height: 100%;
-  border-radius: 2px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  overflow: hidden;
-  background: linear-gradient(180deg, #d9dfdc, #bcc6c2);
-
-  svg {
-    width: 85%;
-    fill: #9aa7a2;
-  }
 `
 
 const Links = styled.div`
@@ -213,7 +197,6 @@ const Link = styled.a`
 
 interface InfoCardProps {
   className?: string
-  photoSrc?: string
 }
 
 export default function InfoCard(props: InfoCardProps) {
@@ -227,16 +210,7 @@ export default function InfoCard(props: InfoCardProps) {
         <Rule />
       </Identity>
       <PhotoMount>
-        {props.photoSrc ? (
-          <Photo src={props.photoSrc} alt="Nathan Myers" />
-        ) : (
-          <PhotoPlaceholder aria-hidden="true">
-            <svg viewBox="0 0 100 100">
-              <circle cx="50" cy="38" r="20" />
-              <path d="M10 100c0-24 18-38 40-38s40 14 40 38z" />
-            </svg>
-          </PhotoPlaceholder>
-        )}
+        <Photo src={profilePhoto} alt="Nathan Myers" />
       </PhotoMount>
       <Links>
         <Link

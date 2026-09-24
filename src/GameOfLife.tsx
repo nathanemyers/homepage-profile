@@ -4,8 +4,9 @@ import { isMobile } from "./utils"
 import { CELL_COLOR_NEW, CELL_COLOR_MID, CELL_COLOR_OLD } from "./colors"
 import { lerpColor, nextGeneration } from "./life"
 
+// Vertical swipes scroll the page content layered above; taps still paint
 const Canvas = styled.canvas`
-  touch-action: none;
+  touch-action: pan-y;
 `
 
 const CELL_SIZE_DESKTOP = 15
@@ -56,8 +57,13 @@ function startGameOfLife(canvas: HTMLCanvasElement): () => void {
   }
 
   function computeGrid(): void {
-    cssW = window.innerWidth
-    cssH = window.innerHeight
+    const width = window.innerWidth
+    // Mobile browsers change innerHeight as the URL bar hides and shows while
+    // scrolling. Only grow the canvas in that case, so the grid isn't resized
+    // mid-scroll.
+    cssH =
+      width === cssW ? Math.max(cssH, window.innerHeight) : window.innerHeight
+    cssW = width
     cellSize = isMobile() ? CELL_SIZE_MOBILE : CELL_SIZE_DESKTOP
     cols = Math.max(4, Math.ceil(cssW / cellSize))
     rows = Math.max(4, Math.ceil(cssH / cellSize))

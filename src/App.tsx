@@ -2,6 +2,7 @@ import styled from "styled-components"
 import GameOfLife from "./GameOfLife"
 import { BACKGROUND_COLOR } from "./colors"
 import InfoCard from "./InfoCard"
+import AboutSection from "./AboutSection"
 
 const AppContainer = styled.div`
   background-color: ${BACKGROUND_COLOR};
@@ -12,7 +13,10 @@ const Container = styled.div`
   display: grid;
   position: relative;
   grid-template-columns: 1fr min(520px, calc(100vw - 2rem)) 1fr;
-  grid-template-rows: 20vh 1fr;
+  /* Card sits 20% down; the about sheet starts 80% down, or just below the
+     card on screens too short for that */
+  grid-template-rows: 20vh minmax(60vh, auto) auto;
+  padding-bottom: 20vh;
   z-index: 1;
   pointer-events: none;
 `
@@ -25,6 +29,8 @@ const StyledGameOfLife = styled(GameOfLife)`
 const StyledInfoCard = styled(InfoCard)`
   grid-column: 2;
   grid-row: 2;
+  align-self: start;
+  margin-bottom: 2rem;
   pointer-events: auto;
 
   box-shadow:
@@ -51,12 +57,21 @@ const StyledInfoCard = styled(InfoCard)`
   }
 `
 
+const StyledAboutSection = styled(AboutSection)`
+  grid-column: 1 / -1;
+  grid-row: 3;
+  justify-self: center;
+  max-width: min(760px, calc(100vw - 2rem));
+  pointer-events: auto;
+`
+
 function App() {
   return (
     <AppContainer>
       <StyledGameOfLife />
       <Container>
         <StyledInfoCard />
+        <StyledAboutSection />
       </Container>
     </AppContainer>
   )

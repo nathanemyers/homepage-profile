@@ -20,20 +20,6 @@ const Sheet = styled.section`
     0 12px 24px rgba(0, 0, 0, 0.16);
 `
 
-const Name = styled.h1`
-  margin: 0 0 0.25rem;
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  font-weight: 700;
-  line-height: 1.1;
-`
-
-const Tagline = styled.p`
-  margin: 0 0 2rem;
-  font-size: clamp(0.85rem, 2.4vw, 1rem);
-  font-style: italic;
-  color: ${INK_MUTED};
-`
-
 const SectionTitle = styled.h2`
   margin: 2.5rem 0 0.75rem;
   font-family: system-ui, sans-serif;
@@ -258,7 +244,9 @@ const jobs: JobData[] = [
     role: "Software Engineer",
     location: "Kansas City, MO",
     dates: "January 2011 – June 2012",
-    bullets: ["Developed highly available SaaS for message processing and routing."],
+    bullets: [
+      "Developed highly available SaaS for message processing and routing.",
+    ],
     stack: "Java 6, Mule ESB, Spring MVC, Maven, Jenkins",
   },
 ]
@@ -270,18 +258,15 @@ interface ResumeProps {
 export default function Resume(props: ResumeProps) {
   return (
     <Sheet className={props.className}>
-      <Name>Nathan Myers</Name>
-      <Tagline>Software Engineer — Chicago, Illinois</Tagline>
-
-      <SectionTitle>About</SectionTitle>
+      <SectionTitle>About Me</SectionTitle>
       <Traits>
         <Trait>
           <strong>Friendly and Outgoing:</strong> I enjoy getting to know my
           coworkers on a personal level and helping others learn new skills.
         </Trait>
         <Trait>
-          <strong>Architecture Focused:</strong> I am not intimidated by
-          large problems and designing complex systems.
+          <strong>Architecture Focused:</strong> I am not intimidated by large
+          problems and designing complex systems.
         </Trait>
         <Trait>
           <strong>Documentation Forward:</strong> I believe good software is
@@ -336,24 +321,6 @@ export default function Resume(props: ResumeProps) {
           </Job>
         ))}
       </JobList>
-
-      <SectionTitle>Side Projects</SectionTitle>
-      <RoleLine>
-        I have been experimenting and learning what I can about modern AI
-        tooling and programming techniques. I am excited to take this
-        knowledge and apply it to my next job.
-      </RoleLine>
-      <Bullets>
-        <Bullet>
-          Ran local AI models and manually connected them to MCP servers.
-        </Bullet>
-        <Bullet>
-          Analysed existing large skills based repositories to figure out
-          how they work.
-        </Bullet>
-        <Bullet>Gained familiarity with Claude Code and ollama.</Bullet>
-        <Bullet>Written several toy agent skill projects.</Bullet>
-      </Bullets>
     </Sheet>
   )
 }

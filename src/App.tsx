@@ -2,6 +2,7 @@ import styled from "styled-components"
 import GameOfLife from "./GameOfLife"
 import { BACKGROUND_COLOR } from "./colors"
 import InfoCard from "./InfoCard"
+import Resume from "./Resume"
 
 const AppContainer = styled.div`
   background-color: ${BACKGROUND_COLOR};
@@ -13,6 +14,7 @@ const Container = styled.div`
   position: relative;
   grid-template-columns: 1fr min(520px, calc(100vw - 2rem)) 1fr;
   grid-template-rows: 20vh 1fr;
+  min-height: 100vh;
   z-index: 1;
   pointer-events: none;
 `
@@ -28,6 +30,21 @@ const StyledInfoCard = styled(InfoCard)`
   pointer-events: auto;
 `
 
+// Pulled up so its top edge lands 70% down the initial viewport,
+// overlapping the tail end of the hero section.
+const ResumeWrapper = styled.div`
+  position: relative;
+  margin-top: -30vh;
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem 4rem;
+  z-index: 1;
+`
+
+const StyledResume = styled(Resume)`
+  pointer-events: auto;
+`
+
 function App() {
   return (
     <AppContainer>
@@ -35,6 +52,9 @@ function App() {
       <Container>
         <StyledInfoCard />
       </Container>
+      <ResumeWrapper>
+        <StyledResume />
+      </ResumeWrapper>
     </AppContainer>
   )
 }

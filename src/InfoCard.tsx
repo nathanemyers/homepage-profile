@@ -149,10 +149,15 @@ const PhotoMount = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 2px;
   overflow: hidden;
+  /* Forces its own compositing layer up front so the blended photo paints
+     immediately; without it, Safari can leave mix-blend-mode content
+     unpainted until something else forces a repaint (e.g. card hover). */
+  isolation: isolate;
 
   img {
     filter: saturate(0.9) contrast(0.95);
     mix-blend-mode: multiply;
+    transform: translateZ(0);
   }
 `
 
